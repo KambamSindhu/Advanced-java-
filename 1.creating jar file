@@ -1,0 +1,55 @@
+/****************************STEPS TO CREATE A JAR FILE *********************************/ 
+STEP 1: Create a user class
+== User.java ==
+public class User{
+    public static void main(String[] args) {
+     System.out.print("Hello User");
+    }
+}
+== Comiple the user class ===
+javac User.java 
+== creation of jar file == 
+//CREATING Exxecutable jar files
+SYNTAX : jar cvfw <filename.jar> <entry.class> <*.class> // This creates manifest file as well 
+jar cvfe app.jar User.java *.class
+//CREATING non Executable jar files
+//Without entry point 
+SYNTAX : jar cvfw <filename.jar> <entry.class> <*.class> // This creates without manifest file 
+
+STEP : 2  Delete .java and .class files 
+
+STEP : 3  Create demo class and create an object for user
+public class Demo
+{
+    public static void main(string args[])
+    {
+        User u =new User();
+        System.out.print(u.hashCode);
+    }
+}
+Compile: javac Demo.java
+
+javac Demo.java
+Output
+
+D:\java notes\ADVANCED JAVA>javac Demo.java
+Demo.java:3: error: cannot find symbol
+    public static void main(string args[])
+                            ^
+  symbol:   class string
+  location: class Demo
+Demo.java:5: error: cannot find symbol
+        User u =new User();
+        ^
+  symbol:   class User
+  location: class Demo
+Demo.java:5: error: cannot find symbol
+        User u =new User();
+                    ^
+  symbol:   class User
+  location: class Demo
+3 errors
+
+STEP : 4  Setting up Class path
+set CLASSPATH=app.jar;.;  // TEMPORARY CLASS PATH SETUP 
+
