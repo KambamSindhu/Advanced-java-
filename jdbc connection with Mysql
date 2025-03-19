@@ -1,0 +1,60 @@
+====================
+STEP UP THE BUILD PATH
+=====================
+Download the jar mysql-connector-j-9.2.0
+Go to project build path --> configure build path --> properities --> class path --> Add external jars--> Select the jar --> Click on apply
+====================
+JAVA PROGRAM
+=====================
+
+package in.ashokit;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class InsertBook {
+
+	private static final String DB_URL ="jdbc:mysql://localhost:3306/advjava";
+	private static final String DB_UNAME="kambam";
+	private static final String DB_PWD="Abc123";
+	
+	private static final String Insert_SQL ="Insert into Books Values(101,'Java',1000)";
+	public static void main(String[] args) throws Exception {
+		
+    // Step1:Load the driver
+      Class.forName("com.mysql.cj.jdbc.Driver");
+     // Step 2:Get DB Connection
+     Connection con= DriverManager.getConnection(DB_URL,DB_UNAME,DB_PWD );
+     System.out.println(con);
+     // Step 3:Create statement
+     Statement stmt = con.createStatement();
+     
+   //Step 4: Execute Query
+     int rowsEffected = stmt.executeUpdate(Insert_SQL);
+     //Step5:Process Result
+     System.out.println("Record Inserted COunt :: "+ rowsEffected);
+     //Step 6: CLose Connection
+     con.close();
+;		
+	}
+}
+
+========================
+SQL
+========================
+show databases;
+create database advjava;
+use advjava;
+CREATE TABLE BOOKS(
+             BOOK_ID INT (10),
+             BOOK_NAME VARCHAR(100),
+             BOOK_PRICE INT(10)
+             );
+             
+commit;
+SHOW TABLES;
+Select * from Books;
+Insert into Books Values(102,'C',200);
+
+
